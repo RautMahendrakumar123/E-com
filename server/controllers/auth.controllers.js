@@ -1,6 +1,7 @@
 import usermodel from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import IncryptPassword from '../helpers/auth.helpers.js'
 
 export const registerController = async (req, res) => {
     try {
