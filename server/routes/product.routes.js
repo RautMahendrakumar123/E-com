@@ -1,7 +1,6 @@
 import express from 'express'
 const router = express.Router();
 import { addProduct, getProducts, getProduct, updateProduct, deleteProduct, getProductByCategory, getSpecialProduct, getAllProducts } from '../controllers/product.controllers.js';
-import isAdmin from '../middlewares/isAdmin.js';
 import multerMiddleware from '../middlewares/multer.js'
 
 
@@ -22,4 +21,4 @@ router.put('/product/update/:id',multerMiddleware,updateProduct);
 
 router.delete('/product/delete/:id',deleteProduct);
 
-module.exports = router;
+export default router;

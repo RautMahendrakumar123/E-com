@@ -7,6 +7,8 @@ import Header from '../src/components/header/Header'
 import Footer from '../src/components/footer/Footer'
 import Dashboard from './pages/dashboard/Dashboard'
 import Register from './pages/register/Register'
+import RegisterAdmin from './pages/registerAdmin/RegisterAdmin'
+import Upload from './pages/uploadProduct/Upload'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/adminregister' element={<RegisterAdmin />} />
+          <Route path='/upload' element={<Upload />} />
         </Routes>
       </div>
       <Footer />

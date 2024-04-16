@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/logo1.png';
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+const navigate = useNavigate()
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+  const token  = localStorage.getItem("token")
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.reload()
+    setTimeout(() => {
+      navigate('/')
+    }, 1000);
+  }
+
 
   return (
     <div className='px-10 h-20 border-b-2 flex items-center justify-center'>
@@ -29,11 +41,17 @@ const Header = () => {
           </div>
 
           <div className="hidden sm:flex gap-8 items-center">
-            <div>
-              <Link to="/login">
-                <button type="button" className="px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800">LOGIN</button>
-              </Link>
-            </div>
+            {!token ?
+              <div>
+                <Link to="/login">
+                  <button type="button" className="px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800">LOGIN</button>
+                </Link>
+              </div>
+              :
+              <div onClick={handleLogout}>
+                  <button type="button" className="px-3 py-2 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-800">LOGOUT</button>
+              </div>
+            }
             <div><FaShoppingCart className='w-7 h-7 cursor-pointer text-gray-600' /></div>
             <div className="hover:text-zinc-700 font-bold text-center text-zinc-500 border-2 border-gray-300 p-2 cursor-pointer">DASHBOARD</div>
           </div>

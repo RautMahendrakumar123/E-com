@@ -3,7 +3,7 @@ import productModel from '../models/product.model.js'
 
 export const addProduct = async (req, res) => {
     try {
-            const { productname, desc, price, category, special,image } = req.body;
+            const { productname, desc, price, category, special } = req.body;
 
             if (!productname || !req.file || !desc || !price || !category) {
                 return res.status(400).send('Fill in all the details, including the image');

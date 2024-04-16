@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <div className='flex items-center justify-center bg-blue-100'  style={{ minHeight: 'calc(100vh - 160px)' }}>
-      <div className='flex flex-col items-center justify-center w-full sm:w-1/4 md:w-1/2 lg:w-1/4 bg-white py-10'>
+      <div className='flex flex-col items-center justify-center w-full sm:w-1/4 md:w-1/2 lg:w-1/4 bg-white py-8'>
         <div className='pb-5 font-serif font-extrabold'>
           LOGIN
         </div>
@@ -57,7 +57,8 @@ const Login = () => {
             <input type='password' placeholder='password'  name='password' value={formData.password} onChange={handleChange} className='border-2 w-full border-gray-500 p-2 focus:outline-none' />
           </div>
           <div className='mt-1 text-center'>
-            don't have account <Link to='/register'><span className='text-blue-500'>Sign Up</span></Link>
+            don't have account <Link to='/register'><span className='text-blue-500'>Sign Up </span></Link>
+            <span>/ Admin <Link to='/adminregister'><span className='text-blue-500'>Admin</span></Link></span>
           </div>
           <div className='mt-6 w-64 sm:w-full flex justify-center items-center'>
             <button type='submit' className='bg-blue-500 px-3 py-2 w-full text-white font-bold hover:bg-blue-700'>Sign In</button>
