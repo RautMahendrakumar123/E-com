@@ -132,3 +132,6 @@ export const privateRoute = (req, res) => {
     res.status(200).json({ ok: true })
 }
 
+export const AdminPrivateRoute = (req,res)=>{
+    res.status(200).json({ok:true})
+}

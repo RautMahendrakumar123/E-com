@@ -15,15 +15,15 @@ const navigate = useNavigate()
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.reload()
     setTimeout(() => {
       navigate('/')
     }, 1000);
+    window.location.reload()
   }
 
 
   return (
-    <div className='px-10 h-20 border-b-2 flex items-center justify-center'>
+    <div className='px-10 h-20 border-b-2 flex items-center justify-center '>
       <div className='flex justify-between w-full items-center p-2'>
         <Link to='/'><div className='w-14'><img src={logo} alt="Logo" /></div></Link>
         <div className='w-full sm:w-64 p-1'>
@@ -52,8 +52,12 @@ const navigate = useNavigate()
                   <button type="button" className="px-3 py-2 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-800">LOGOUT</button>
               </div>
             }
+            <Link to='/cart'>
             <div><FaShoppingCart className='w-7 h-7 cursor-pointer text-gray-600' /></div>
+            </Link>
+            <Link to='/dashboard'>
             <div className="hover:text-zinc-700 font-bold text-center text-zinc-500 border-2 border-gray-300 p-2 cursor-pointer">DASHBOARD</div>
+            </Link>
           </div>
 
 

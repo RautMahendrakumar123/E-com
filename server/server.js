@@ -13,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use('/images',express.static('server/uploads'))
 
 
 app.use('/api/v1',authRoutes)

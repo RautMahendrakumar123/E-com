@@ -9,6 +9,11 @@ import Dashboard from './pages/dashboard/Dashboard'
 import Register from './pages/register/Register'
 import RegisterAdmin from './pages/registerAdmin/RegisterAdmin'
 import Upload from './pages/uploadProduct/Upload'
+import ViewProduct from './pages/viewProduct/ViewProduct'
+import Update from './pages/updateProduct/Update'
+import GetProducts from './pages/getProducts/getProducts'
+import PrivateRoute from './pages/PrivateRoute/userprivate/PrivateRoute'
+import PrivateRouteA from './pages/PrivateRoute/adminprivate/PrivateRoute'
 
 function App() {
   return (
@@ -16,13 +21,19 @@ function App() {
       <Header />
       <div className='px-10 flex-1'>
         <Routes>
-          <Route path='/dashboard' element={<Dashboard />}>
-
+          <Route path='/dashboard' element={<PrivateRoute />}>
+            <Route path='' element={<Dashboard />} />
+          </Route>
+          <Route path='/dashboard' element={<PrivateRouteA />}>
+            <Route path='' element={<Dashboard />} />
+            <Route path='update/:id' element={<Update />} />
+          <Route path='getproducts' element={< GetProducts/>} />
           </Route>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/adminregister' element={<RegisterAdmin />} />
+          <Route path='/viewproduct' element={<ViewProduct />} />
           <Route path='/upload' element={<Upload />} />
         </Routes>
       </div>
