@@ -25,7 +25,7 @@ const Product = ({product}) => {
       <div className='flex-1 flex flex-col items-center justify-center'>
         <div className='font-bold py-1'>{product.productname}</div>
         <div className='text-gray-700 py-1'>Rs. {product.price}</div>
-        <NavLink to={`/dashboard/update/${product._id}`}>
+        <NavLink to={`/admindashboard/update/${product._id}`}>
         <button className='bg-teal-600 text-white w-64 h-full py-3 mb-0'>Update</button>
         </NavLink>
         <button onClick={()=>handleProductDelete(product._id)} className='bg-red-800 text-white w-64 py-3 mb-0'>Delete</button>

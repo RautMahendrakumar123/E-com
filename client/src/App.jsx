@@ -14,6 +14,9 @@ import Update from './pages/updateProduct/Update'
 import GetProducts from './pages/getProducts/getProducts'
 import PrivateRoute from './pages/PrivateRoute/userprivate/PrivateRoute'
 import PrivateRouteA from './pages/PrivateRoute/adminprivate/PrivateRoute'
+import AdminDashboard from './pages/dashboardAdmin/AdminDashboard'
+import PageNotFound from './pages/pagenotfound/PageNotFound'
+import Cart from './pages/cartPage/Cart'
 
 function App() {
   return (
@@ -22,19 +25,21 @@ function App() {
       <div className='px-10 flex-1'>
         <Routes>
           <Route path='/dashboard' element={<PrivateRoute />}>
-            <Route path='' element={<Dashboard />} />
+            <Route path='user' element={<Dashboard />} />
+            <Route path='cart' element={<Cart />} />
           </Route>
-          <Route path='/dashboard' element={<PrivateRouteA />}>
-            <Route path='' element={<Dashboard />} />
+          <Route path='/admindashboard' element={<PrivateRouteA />}>
+            <Route path='admin' element={<AdminDashboard />} />
             <Route path='update/:id' element={<Update />} />
-          <Route path='getproducts' element={< GetProducts/>} />
+            <Route path='getproducts' element={< GetProducts />} />
           </Route>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/adminregister' element={<RegisterAdmin />} />
-          <Route path='/viewproduct' element={<ViewProduct />} />
+          <Route path='/viewproduct/:productId' element={<ViewProduct />} />
           <Route path='/upload' element={<Upload />} />
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
       <Footer />
