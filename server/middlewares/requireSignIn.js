@@ -6,7 +6,7 @@ const requireSignIn = (req,res,next)=>{
         message: 'You Must Be Logged In First'
     })
   }
-  const token = req.headers.authorization;
+  const token = req.headers.authorization.replace('Bearer ', '')
   
   jwt.verify(token,process.env.secretSTR, (err,payload)=>{
     if(err){
@@ -14,7 +14,8 @@ const requireSignIn = (req,res,next)=>{
             message:'Unauthorized: Invalid Token'
         })
     }else{
-        req.userid=payload.id;
+        req.userid=payload.userId;
+        
         next()
     }
   })

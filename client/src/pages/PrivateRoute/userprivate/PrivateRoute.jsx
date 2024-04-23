@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
+import Spinner from '../../../components/spinner/Spinner';
 
 const PrivateRoute = () => {
     const [ok, setOk] = useState(false);
@@ -28,7 +29,7 @@ const PrivateRoute = () => {
   return (
     <div>
     {
-        ok ? <Outlet /> : 'spinner'
+        ok ? <Outlet /> : <Spinner/>
     }
 </div>
   )

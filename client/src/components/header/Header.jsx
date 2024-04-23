@@ -8,7 +8,6 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 const navigate = useNavigate()
 const user_data = useSelector(state=>state.user)
-console.log(user_data);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);

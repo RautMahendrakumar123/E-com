@@ -7,6 +7,7 @@ import cors from 'cors'
 import authRoutes from './routes/auth.routes.js'
 import userRoute from './routes/user.routes.js'
 import productRoutes from './routes/product.routes.js'
+import cartRoutes from './routes/cart.routes.js'
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use('/images',express.static('server/uploads'))
 app.use('/api/v1',authRoutes)
 app.use('/api/v1',userRoute)
 app.use('/api/v1',productRoutes)
+app.use('/api/v1',cartRoutes)
 
 
 const PORT = process.env.PORT || 5000;
