@@ -17,6 +17,8 @@ import PrivateRouteA from './pages/PrivateRoute/adminprivate/PrivateRoute'
 import AdminDashboard from './pages/dashboardAdmin/AdminDashboard'
 import PageNotFound from './pages/pagenotfound/PageNotFound'
 import Cart from './pages/cartPage/Cart'
+import GetUsers from './pages/getUsers/GetUsers'
+
 
 function App() {
   return (
@@ -32,13 +34,14 @@ function App() {
             <Route path='admin' element={<AdminDashboard />} />
             <Route path='update/:id' element={<Update />} />
             <Route path='getproducts' element={< GetProducts />} />
+          <Route path='getusers' element={<GetUsers />} />
+          <Route path='upload' element={<Upload />} />
           </Route>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/adminregister' element={<RegisterAdmin />} />
           <Route path='/viewproduct/:productId' element={<ViewProduct />} />
-          <Route path='/upload' element={<Upload />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>

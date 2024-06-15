@@ -21,4 +21,6 @@ router.put('/product/update/:id',multerMiddleware,updateProduct);
 
 router.delete('/product/delete/:id',deleteProduct);
 
+// router.get('/search-product',searchProduct)
+
 export default router;

@@ -15,7 +15,8 @@ export const getUsersController = async (req, res) => {
 
 export const getUsersByIdController = async (req, res) => {
     try {
-        const user = await usermodel.findById(req.params.id,'-password')
+        const userId = req.userid
+        const user = await usermodel.findById(userId,'-password')
         if(!user){
             return res.status(404).json({error:'something went wrong'})
         }

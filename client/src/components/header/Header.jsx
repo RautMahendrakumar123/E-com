@@ -2,18 +2,47 @@ import React, { useEffect, useState } from 'react';
 import logo from '../../assets/logo1.png';
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import axios from 'axios'
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [user,setUser]=useState([]);
+  const [cartproduct,setCartproduct]=useState([])
+  const token = localStorage.getItem('token')
 const navigate = useNavigate()
-const user_data = useSelector(state=>state.user)
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
-  const token  = localStorage.getItem("token")
+  useEffect(()=>{
+    const fetchUser = async()=>{
+      const response = await axios.get('http://localhost:5000/api/v1/getuser',{
+        headers:{
+          Authorization:token
+        }
+      })
+      if(response.status===200){
+        setUser(response.data)
+      }
+    }
+    fetchUser()
+  },[token])
+
+  useEffect(()=>{
+    const fetchProduct = async()=>{
+        const response = await axios.get('http://localhost:5000/api/v1/get-cart-product',{
+            headers:{
+                Authorization:token
+            }
+        })
+        if(response){
+            setCartproduct(response.data.cart.items)
+        }
+    }
+    fetchProduct()
+},[token])
+
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -22,7 +51,6 @@ const user_data = useSelector(state=>state.user)
     }, 1000);
     window.location.reload()
   }
-
 
   return (
     <div className='px-10 h-20 border-b-2 flex items-center justify-center bg-gray-100'>
@@ -55,9 +83,12 @@ const user_data = useSelector(state=>state.user)
               </div>
             }
             <Link to='/dashboard/cart'>
-            <div><FaShoppingCart className='w-7 h-7 cursor-pointer text-gray-600' /></div>
+            <div className='relative'>
+              <FaShoppingCart className='h-7 w-full cursor-pointer text-gray-600' />
+              <div className='absolute top-0 right-0 -mt-2 -mr-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs'>{cartproduct.length>0 ? cartproduct.length : 0}</div>
+            </div>
             </Link>
-            <Link to={user_data.role===1? '/admindashboard/admin' : '/dashboard/user'}>
+            <Link to={user.role===1? '/admindashboard/admin' : '/dashboard/user'}>
             <div className="hover:text-zinc-700 font-bold text-center text-zinc-500 border-2 border-gray-300 p-2 cursor-pointer">DASHBOARD</div>
             </Link>
           </div>
@@ -73,7 +104,7 @@ const user_data = useSelector(state=>state.user)
                   <Link to="/dashboard/cart" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cart</Link>
                 </li>
                 <li>
-                  <Link to={user_data.role===1? '/admindashboard/admin' : '/dashboard/user'} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Dashboard</Link>
+                  <Link to={user.role===1? '/admindashboard/admin' : '/dashboard/user'} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Dashboard</Link>
                 </li>
               </ul>
             </div>

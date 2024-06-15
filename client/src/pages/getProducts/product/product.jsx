@@ -20,7 +20,7 @@ const Product = ({product}) => {
   return (
     <div className='flex w-64 h-80 flex-col bg-white border-2 my-10'>
       <div className='flex-1 h-48 bg-gray-100'>
-        <img src={`http://localhost:5000/images/${product.image}`} alt={product.productname} className='object-contain w-full h-full' />
+        <img src={`http://localhost:5000/images/${product.image}`} alt={product.productname} className='object-contain w-full h-full' style={{mixBlendMode:'multiply'}}/>
       </div>
       <div className='flex-1 flex flex-col items-center justify-center'>
         <div className='font-bold py-1'>{product.productname}</div>
